@@ -1,0 +1,84 @@
+//
+   Created by joe on 05/04/2016.
+include mixins/formula
+include mixins/code_sample
+extends problem_blank
+
+block content
+    h1
+        a(href="https://projecteuler.net/problem=1") Question
+    p Find the sum of all the multiples of 3 or 5 below 1000.
+    h1 Brute Force
+
+    p
+        | There is a simple brute force solution to the problem.
+        | This be done by checking all the number between 1 and 999 to see if they are divisible by either 3
+        | or 5.
+        br
+        | For this problem I have chosen to use python to implement the simple loop from 1 to 999
+    +code_sample('python')
+        include ../public/code/problem1.py
+    p
+        | This solution will run in $O(n)$ time there $n$ the the size of the range of numbers being considered
+
+    h1 A Smarter Approach
+
+    p
+        | It is possible to derive a closed solution to the finite sum
+    +formula.
+        $$1 + 2 + 3 + ... =\sum_{n=1}^N n$$
+    p
+        | We will now use the method of difference to derive the closed form of the sum if we consider the sum
+    +formula
+        | \begin{align*}
+        |   \require{cancel}
+        |   S_n &= \sum_{n=1}^N (n+1)^2 - (n-1)^2\\
+        |   &= \cancel{2^2} - 0\\
+        |   &+ \cancel{3^2} - 1\\
+        |   &+ \cancel{4^2} - \cancel{2^2}\\
+        |   &\quad\quad \vdots \\
+        |   &+ \cancel{(N-1)^2} - \cancel{(N-3)^2}\\
+        |   &+ (N)^2 \quad\ \ \ - \cancel{(N-2)^2}\\
+        |   &+ (N+1)^2 - \cancel{(N-1)^2}\\
+        |   &= (N+1)^2 + N^2 - 1\\
+        |   &= 2N(N+1)
+        | \end{align*}
+    p
+        | This gives us a formula for $S_n$ we can also see that
+    +formula.
+        \begin{align*}
+          S_n &= \sum_{n=1}^N (n+1)^2 - (n-1)^2\\
+              &= \sum_{n=1}^N 4 n \\
+              &= 4 \sum_{n=1}^N n
+        \end{align*}
+    p
+        | Together this gives us \[ \sum_{n=1}^N n = \frac{N(N+1)}{2} \]
+        br
+        | Now with the closed formula we can take another look at the problem above.
+        | This can then be expressed as the sum of all multiples of three or five.
+    +formula.
+        \[ \mathrm{sum}(3 \text{ or } 5) = \mathrm{sum}(3) + \mathrm{sum}(5) - \mathrm{sum}(3\cdot 5) \]
+    p
+        | The #[a(href="https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle") Exclusion Principle] says
+        | we must not count the overlapping values twice; hence we must remove one count of multiples of 15.
+        br
+        | Then we can define the sum function as
+    +formula.
+        \[ \text{sum}(x) = \sum_{n=1}^{\lfloor N/x \rfloor} x n \]
+    p
+        | the things to note here are the sum runs up to $N/x$ in every case and also
+        | that we apply $\lfloor x \rfloor$ which is the floor function which round the number down
+        | to the nearest integer.
+        br
+        | Here $N$ will be $999$ since the question asks for all number less than 1000.
+    +formula.
+        \begin{align*}
+            \mathrm{sum}(3 \text{ or } 5) &= \sum_{n=1}^{\lfloor N/3 \rfloor} 3n + \sum_{n=1}^{\lfloor N/5 \rfloor} 5n - \sum_{n=1}^{\lfloor N/15 \rfloor} 15n\\
+        &= \sum_{n=1}^{\lfloor 999/3 \rfloor} 3n + \sum_{n=1}^{\lfloor 999/5 \rfloor} 5n - \sum_{n=1}^{\lfloor 999/15 \rfloor} 15n\\
+        &= 3 \cdot \frac{333\cdot 334}{2} + 5 \cdot \frac{199\cdot 200}{2} - 15 \cdot \frac{66\cdot 67}{2}\\
+        &= 233168
+        \end{align*}
+    p
+        | We have now solved the problem in $O(1)$ using a closed formula
+
+

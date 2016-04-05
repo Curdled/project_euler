@@ -1,0 +1,29 @@
+//
+   Created by joe on 05/04/2016.
+
+head
+    link(rel='stylesheet', href='/stylesheets/download.css')
+
+    script(src="//cdn.jsdelivr.net/highlight.js/9.2.0/highlight.min.js")
+
+    script(src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML', async=false)
+    script hljs.initHighlightingOnLoad();
+
+
+    script(type="text/x-mathjax-config").
+        MathJax.Hub.Config({tex2jax: {styles: {
+        ".MathJax_Display": {
+        "text-align": "center",
+        margin:       "1em 0em"
+        },
+
+        ".MathJax .merror": {
+        "background-color": "#FFFF88",
+        color:   "#CC0000",
+        border:  "1px solid #CC0000",
+        padding: "1px 3px",
+        "font-style": "normal",
+        "font-size":  "90%"
+        }
+
+        },inlineMath: [['$','$'], ['\\(','\\)']]}});
