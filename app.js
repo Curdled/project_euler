@@ -22,17 +22,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
 app.use(stylus.middleware({
   src: __dirname + '/resources',
   dest: __dirname + '/public',
   debug: true,
-  force: true,
-  compile: function (str, path) {
-    return stylus(str).set('filename', path).set('compress', true);
-  }
+  force: true
 }));
+app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use('/', routes);
 app.use('/problems', problems);

@@ -1,8 +1,7 @@
 mixin code_sample(language)
     if block
-        .code_sample
-            pre
-                code(class=language)
-                    block
+        pre
+            code.code_sample(class=language)
+                block
     else
         p nothing

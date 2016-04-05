@@ -1,0 +1,44 @@
+//
+   Created by joe on 05/04/2016.
+include mixins/formula
+include mixins/code_sample
+extends problem_blank
+
+block title
+    title Problem 3
+
+block content
+    h1
+        a(href="https://projecteuler.net/problem=3") Problem 3
+    p What is the largest prime factor of the number 600851475143?
+    h1 Brute Force
+    p
+        | We can just check all the number from 2 to the number $N=600851475143$ to see if they are both prime and divide
+        | $N$.
+    +code_sample('python')
+        include ../resources/code/problem3/problem3-simple.py
+    p
+        | I we also notice that we only need to check number up the square root of the number $N$, since either the number $N = p\cdot p$
+        | where $p$ is a prime then we can the number we require is the last number we check. On the other hand the number could
+        | be made up of more than two primes in which case all the primes will be less than $\sqrt{N}$.
+        br
+        | This allows the code to be sped up a little:
+    +code_sample('python')
+        include ../resources/code/problem3/problem3-better.py
+
+     p
+        | This takes about 1.235 seconds to run
+        br
+        | An even better solution would be to implement the
+        | #[a(href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes") Sieve of Eratosthenes],
+        | this solution will creating the list all primes $\left[1,\sqrt{N}\right]$ and then finding the correct prime $p$ such that $p$ divides $N$
+        | written $(p\ |\ N)$
+
+    +code_sample('python')
+        include ../resources/code/problem3/problem3-even-better.py
+
+
+    p
+        | This runs fast than the other approach at 0.7613 seconds however this approach will require extra memory to run since
+        | a list of all the values between 1 and the $\sqrt{N}$ must be created, in this case the $\sqrt{N} = 775141$.
+        | This will require about $\log_2 775141 \approx 20$ so about 10 megabytes of ram.

@@ -1,0 +1,38 @@
+//
+   Created by joe on 05/04/2016.
+include mixins/formula
+include mixins/code_sample
+extends problem_blank
+
+block title
+    title Problem 2
+
+block content
+    h1
+        a(href="https://projecteuler.net/problem=2") Problem 2
+    p By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+    h1 Brute Force
+    p
+        | We will start by generating all the fibonacci number from $1$ to $>4,000,000$, this can be solved
+        | with the following code:
+    +code_sample('python')
+        include ../resources/code/problem2/problem2-simple.py
+
+    h1 Some Improvement
+    p
+        | If we look at the sequence of fibonacci number we see a pattern \[1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...\]
+        | that every third fibonacci number is even so maybe we could find a way to generate a fibonacci $F_{n}$ number with the previous
+        | $F_{n-3k}$ fibonacci numbers where $k \in \mathbb{N}_0$
+    +formula.
+        \begin{align*}
+          F_n &= F_{n-1} + F_{n-2}\\
+              &= 2F_{n-2} + F_{n-3}\\
+              &= 2(F_{n-3} + F_{n-4}) + F_{n-3}\\
+              &= 3F_{n-3} + 2F_{n-4}\\
+              &= 3F_{n-3} + F_{n-4} +  F_{n-5} + F_{n-6}\\
+              &= 4F_{n-3} + F_{n-6}
+        \end{align*}
+    p
+        | We can now use this formula to generate only even fibonacci numbers
+    +code_sample('python')
+        include ../resources/code/problem2/problem2-better.py
