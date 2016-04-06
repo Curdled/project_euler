@@ -3,6 +3,12 @@ html
     head
         include includes
         link(rel='stylesheet', href='/styles/style.css')
-        block title
+        block page_name
     body
-        block content
+        h1.title
+            block title
+        .question
+            i
+                block question
+        .content_body
+            block content

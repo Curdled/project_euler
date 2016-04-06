@@ -7,6 +7,3 @@ while current < 4000000:
   temp = old
   old = current
   current = temp + 4 * old
-
-
-print(sum)

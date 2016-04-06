@@ -1,15 +1,31 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: #dbdbdb;
 }
 a {
-  color: #00b7ff;
+  color: #fa9b00;
+}
+h1.title {
+  color: #222;
+}
+p {
+  margin-left: 30px;
+  width: 85%;
+}
+div.question {
+  margin: 0 auto;
+  width: 60%;
+  background-color: #d6d6d6;
+  padding: 1px 1px 1px 1px;
+  border-radius: 5px;
+  color: #7f7f7f;
 }
 .code_sample {
-  width: 70%;
-  margin: 0 auto;
+  margin-left: 30px;
+  width: 80%;
   border-style: solid;
   border-width: 5px;
-  border-color: #cdcdcd;
+  border-color: #c97731;
   border-radius: 4px;
 }

@@ -4,19 +4,24 @@ include mixins/formula
 include mixins/code_sample
 extends problem_blank
 
-block title
+block page_name
     title Problem 3
 
-block content
-    h1
-        a(href="https://projecteuler.net/problem=3") Problem 3
+block title
+    a(href="https://projecteuler.net/problem=3") Problem 3
+
+block question
     p What is the largest prime factor of the number 600851475143?
-    h1 Brute Force
+
+block content
+
+    h2 Brute Force
     p
         | We can just check all the number from 2 to the number $N=600851475143$ to see if they are both prime and divide
         | $N$.
     +code_sample('python')
         include ../resources/code/problem3/problem3-simple.py
+    h2 Small Improvement
     p
         | I we also notice that we only need to check number up the square root of the number $N$, since either the number $N = p\cdot p$
         | where $p$ is a prime then we can the number we require is the last number we check. On the other hand the number could
@@ -29,11 +34,13 @@ block content
      p
         | This takes about 1.235 seconds to run
         br
-        | An even better solution would be to implement the
-        | #[a(href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes") Sieve of Eratosthenes],
-        | this solution will creating the list all primes $\left[1,\sqrt{N}\right]$ and then finding the correct prime $p$ such that $p$ divides $N$
+        | An even better solution would be to implement&nbsp;
+        | the #[a(href="https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes") Sieve of Eratosthenes],
+        | &nbsp;this solution will creating the list all primes $\left[1,\sqrt{N}\right]$ and then finding
+        | the correct prime $p$ such that $p$ divides $N$
         | written $(p\ |\ N)$
 
+     h2 The Sieve
     +code_sample('python')
         include ../resources/code/problem3/problem3-even-better.py
 

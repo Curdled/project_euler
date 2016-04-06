@@ -4,13 +4,17 @@ include mixins/formula
 include mixins/code_sample
 extends problem_blank
 
-block title
+block page_name
     title Problem 2
 
+block title
+    a(href="https://projecteuler.net/problem=2") Problem 2
+
+block question
+    p.question
+        i By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
+
 block content
-    h1
-        a(href="https://projecteuler.net/problem=2") Problem 2
-    p By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
     h1 Brute Force
     p
         | We will start by generating all the fibonacci number from $1$ to $>4,000,000$, this can be solved

@@ -4,22 +4,25 @@ include mixins/formula
 include mixins/code_sample
 extends problem_blank
 
-block title
+block page_name
     title Problem 1
 
-block content
-    h1
-        a(href="https://projecteuler.net/problem=1") Problem 1
-    p Find the sum of all the multiples of 3 or 5 below 1000.
-    h1 Brute Force
+block title
+    a(href="https://projecteuler.net/problem=1") Problem 1
 
+block question
+    p Find the sum of all the multiples of 3 or 5 below 1000.
+
+
+block content
+    h2 Brute Force
     p
         | There is a simple brute force solution to the problem.
         | This be done by checking all the number between 1 and 999 to see if they are divisible by either 3
         | or 5.
         br
         | For this problem I have chosen to use python to implement the simple loop from 1 to 999
-    +code_sample('python')
+    +code_sample('Python')
         include ../resources/code/problem1/problem1.py
     p
         | This solution will run in $O(n)$ time there $n$ the the size of the range of numbers being considered
@@ -62,7 +65,7 @@ block content
     +formula.
         \[ \mathrm{sum}(3 \text{ or } 5) = \mathrm{sum}(3) + \mathrm{sum}(5) - \mathrm{sum}(3\cdot 5) \]
     p
-        | The #[a(href="https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle") Exclusion Principle] says
+        | The #[a(href="https://en.wikipedia.org/wiki/Inclusion%E2%80%93exclusion_principle") Exclusion Principle] says&nbsp;
         | we must not count the overlapping values twice; hence we must remove one count of multiples of 15.
         br
         | Then we can define the sum function as

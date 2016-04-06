@@ -8,5 +8,3 @@ while current < 4000000:
   current = temp + old
   if current % 2 == 0:
     sum += current
-
-print(sum)
