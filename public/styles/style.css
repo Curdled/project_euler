@@ -1,7 +1,17 @@
 body {
-  padding: 50px;
+  margin: 0 0 0 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: #dbdbdb;
+}
+div.banner {
+  width: 100%;
+  position: relative;
+  margin: 0 0 0 0;
+  height: 100px;
+  background-color: #222;
+}
+div.content {
+  padding: 50px;
 }
 a {
   color: #fa9b00;
